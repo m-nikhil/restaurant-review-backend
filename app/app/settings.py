@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'rest_framework',
     'rest_framework.authtoken',
+    'drf_yasg',
     'api'
 ]
 
@@ -147,6 +148,20 @@ REST_FRAMEWORK = {
     ],
 }
 
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'api_key': {
+            'type': 'apiKey',
+            'in': 'header',
+            'name': 'Authorization'
+        }
+    },
+    'public': True,
+    'USE_SESSION_AUTH': False,
+    'DOC_EXPANSION': 'none',
+    'DEFAULT_MODEL_RENDERING': 'example'
+}
+
 # user model
 AUTH_USER_MODEL = 'api.CustomUser'
 
@@ -154,3 +169,5 @@ LOGIN_URL = '/auth/login'
 
 # zomato settings
 ZOMATO_API_KEY = os.getenv("ZOMATO_API_KEY")
+ZOMATO_API_URL = os.getenv("ZOMATO_API_URL")
+CITY_ID =  os.getenv("CITY_ID")
