@@ -22,7 +22,7 @@ from drf_yasg import openapi
 
 schema_view = get_schema_view(
    openapi.Info(
-      title="Split TravelAgent API",
+      title="Zomato",
       default_version='v1',
    ),
    public=True,
