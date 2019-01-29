@@ -50,17 +50,17 @@ class Type(views.APIView):
     def get(self, request):
         PARAMS = {'city_id': settings.CITY_ID} 
         HEADERS = {'Accept': 'application/json', 'user-key': settings.ZOMATO_API_KEY}
-        response = requests.get(url = settings.ZOMATO_API_URL  + 'categories',params = PARAMS, headers = HEADERS)
+        response = requests.get(url = settings.ZOMATO_API_URL  + 'establishments',params = PARAMS, headers = HEADERS)
         return Response(response.json())
 
 class Cuisines(views.APIView):
     def get(self, request):
         PARAMS = {'city_id': settings.CITY_ID} 
         HEADERS = {'Accept': 'application/json', 'user-key': settings.ZOMATO_API_KEY}
-        response = requests.get(url = settings.ZOMATO_API_URL  + 'categories',params = PARAMS, headers = HEADERS)
+        response = requests.get(url = settings.ZOMATO_API_URL  + 'cuisines',params = PARAMS, headers = HEADERS)
         return Response(response.json())
 
-#query
+
 class Restaurant(views.APIView):
 
     restaurant_id = openapi.Parameter('restaurant_id', openapi.IN_QUERY, description="restaurant_id", type=openapi.TYPE_STRING)
@@ -72,7 +72,7 @@ class Restaurant(views.APIView):
         if not restaurant_id:
             return Response({'error':'Pass restaurant id query parameter.'}, status=500)
 
-        PARAMS = {} 
+        PARAMS = {'res_id': restaurant_id} 
         HEADERS = {'Accept': 'application/json', 'user-key': settings.ZOMATO_API_KEY}
-        response = requests.get(url = settings.ZOMATO_API_URL  + 'search',params = PARAMS, headers = HEADERS)
+        response = requests.get(url = settings.ZOMATO_API_URL  + 'restaurant',params = PARAMS, headers = HEADERS)
         return Response(response.json())

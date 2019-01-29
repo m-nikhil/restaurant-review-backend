@@ -31,8 +31,8 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('auth/login', views.LoginViewSet.as_view()),
-    path('auth/register', views.RegisterViewSet.as_view()),
+    path('api/v1/auth/login', views.LoginViewSet.as_view()),
+    path('api/v1/auth/register', views.RegisterViewSet.as_view()),
 
     # swagger
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),

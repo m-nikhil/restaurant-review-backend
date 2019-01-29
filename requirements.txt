@@ -2,4 +2,6 @@ django
 djangorestframework
 psycopg2-binary
 python-dotenv
+drf_yasg
+requests
 
